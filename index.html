@@ -539,6 +539,11 @@ body .stage.present:not([aria-pressed="true"]){outline:1px solid var(--stage-bor
 body[data-theme="dark"] .stage.present:not([aria-pressed="true"]){outline:1px solid var(--stage-night-border);outline-offset:2px}
 body .stage[aria-pressed="true"]{outline:2px solid var(--stage-accent);outline-offset:2px}
 body[data-theme="dark"] .stage[aria-pressed="true"]{outline:2px solid var(--stage-night-accent);outline-offset:2px}
+/* Keep the selected stage vivid while marking the calendar stage quietly. */
+body .stage.present:not([aria-pressed="true"]){box-shadow:none!important;outline:1px solid var(--stage-border)!important;outline-offset:2px}
+body .stage.present:not([aria-pressed="true"]) .tile{border:1px solid var(--stage-border)!important;box-shadow:none!important}
+body[data-theme="dark"] .stage.present:not([aria-pressed="true"]){outline-color:var(--stage-night-border)!important}
+body[data-theme="dark"] .stage.present:not([aria-pressed="true"]) .tile{border-color:var(--stage-night-border)!important}
 </style><style id="hdl-cinematic-dark-lighting">
 /* Dark-only atmospheric lighting. Stage identity comes from stageLighting. */
 body[data-theme="dark"]{
