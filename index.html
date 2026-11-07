@@ -571,7 +571,22 @@ body[data-theme="dark"][data-active-stage="0"] .home-four-grid h3,
 body[data-theme="dark"][data-active-stage="0"] .home-four-grid p{color:#f5e9e0!important}
 @media(max-width:700px){.home-four-grid{grid-template-columns:1fr!important}.home-four-grid>.meeting,.home-four-grid>.reflection{min-height:180px!important}.shell{padding-left:14px!important;padding-right:14px!important}}
 @media(prefers-reduced-motion:reduce){.scene .sun,.hero,.journey,.stage,.home-four-grid>*{animation:none!important;transition:none!important}}
-</style></head><body>
+</style>
+<style id="hdl-stage-theme-binding-fix">
+/* Stage variables live on body, where the theme CSS consumes them. */
+body:not([data-theme="dark"]) .journey{background:var(--stage-card)!important;border-color:var(--stage-border)!important}
+body:not([data-theme="dark"]) .stage{background:var(--stage-card)!important;border-color:var(--stage-border)!important;color:var(--stage-text)!important}
+body[data-theme="dark"]{background:var(--stage-night)!important;color:var(--stage-night-text)!important;--hdl-card-bg:var(--stage-night-card);--hdl-card-text:var(--stage-night-text);--hdl-card-border:var(--stage-night-border)}
+body[data-theme="dark"] .journey{background:var(--stage-night-card)!important;border-color:var(--stage-night-border)!important}
+body[data-theme="dark"] .stage{background:var(--stage-night-card)!important;border-color:var(--stage-night-border)!important}
+body[data-theme="dark"] .home-four-grid>.meeting,body[data-theme="dark"] .home-four-grid>.reflection{background:var(--stage-night-card)!important;border-color:var(--stage-night-border)!important;color:var(--stage-night-text)!important}
+body[data-theme="dark"] .home-four-grid h3,body[data-theme="dark"] .home-four-grid p{color:var(--stage-night-text)!important}
+body[data-theme="dark"] .home-four-grid .eyebrow{color:var(--stage-night-accent)!important}
+body[data-theme="dark"][data-active-stage="0"] .journey,body[data-theme="dark"][data-active-stage="0"] .home-four-grid>.meeting,body[data-theme="dark"][data-active-stage="0"] .home-four-grid>.reflection{background:#343137!important;border-color:#806e70!important}
+body[data-theme="dark"][data-active-stage="0"] .stage{background:#302d33!important}
+@media(prefers-reduced-motion:reduce){body,body .journey,body .stage,body .home-four-grid>*{transition:none!important}}
+</style>
+</head><body>
 <div class="shell"><header class="top"><div class="brand"><div class="brandmark" aria-hidden="true"><svg viewBox="0 0 30 30" fill="none" stroke="#66877e" stroke-width="2.2" stroke-linecap="round"><path d="M15 27C10 19 9 12 15 4c6 8 5 15 0 23M15 19C10 11 6 10 3 11c1 8 5 9 12 8M15 16c5-9 9-10 12-9 0 7-5 10-12 9"/></svg></div><div><strong>Human Development Lab</strong><small>PSYC 243 · Every life is still unfolding</small></div></div><nav class="nav" aria-label="Decorative preview navigation"><span>Explore</span><span>My Developmental Journey</span><span>Resources</span></nav><div class="head-actions"><details class="appearance" id="appearanceMenu"><summary aria-label="Appearance settings">⚙ Appearance</summary><div class="appearance-panel"><div class="figure-pick"><span id="figlabel">Figure style</span><div class="seg" role="group" aria-labelledby="figlabel"><button type="button" data-style="classic" aria-pressed="true">Classic</button><button type="button" data-style="feminine" aria-pressed="false">Feminine</button><button type="button" data-style="masculine" aria-pressed="false">Masculine</button></div></div><p class="mininote">Optional artwork preference; Classic displays a variety of people.</p><p class="mini-disclaimer">All three artwork sets are draft variants; review them at the actual tile size.</p></div></details><span class="tag">DESIGN STUDY · NOT CONNECTED</span></div></header>
 <div class="theme-toolbar"><span>Appearance</span><button type="button" id="themeToggle" aria-pressed="false" aria-label="Switch to dark theme">☾ Dark theme</button></div><main><section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><span class="eyebrow" id="chapter">Chapter 06 · The human story</span><h1 id="hero-title">Every life is still unfolding.</h1><p id="intro">From our earliest beginnings to the lives we continue becoming. Every chapter holds a new perspective.</p><span class="season"><span class="sun-dot"></span><span id="sunlabel">Emerging Adulthood</span></span></div><div class="scene" aria-hidden="true"><div class="solar-atmosphere"></div><div class="sun"></div><div class="hill back"></div><div class="hill"></div><div class="scene-person" id="heroFigure"></div></div></section>
 <div class="utility"><div><h2>The lifespan, unfolding</h2><p>Explore the ways people develop, adapt, and grow throughout life.</p><div class="modebar" role="group" aria-label="Atmosphere preview mode"><button type="button" id="calendarMode" class="modeBtn" aria-pressed="false">Follow course calendar</button><span id="previewStatus" role="status">Design preview: Emerging Adulthood</span></div></div></div>
@@ -698,7 +713,7 @@ const coordinatedPalettes=[
  {light:['#f0f0fa','#fbfaff','#4a4b72','#7878ad','#d5d5ec'],dark:['#191e37','#292e4b','#eeeafd','#b6b4e8','#51577e']}
 ];
 function applyCoordinatedPalette(i){
- const root=document.documentElement,body=document.body,p=coordinatedPalettes[i];
+ const root=document.body,body=document.body,p=coordinatedPalettes[i];
  const lightKeys=['--stage-page','--stage-card','--stage-text','--stage-accent','--stage-border'];
  const darkKeys=['--stage-night','--stage-night-card','--stage-night-text','--stage-night-accent','--stage-night-border'];
  lightKeys.forEach((key,j)=>root.style.setProperty(key,p.light[j]));
