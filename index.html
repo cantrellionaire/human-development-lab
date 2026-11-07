@@ -548,8 +548,16 @@ body[data-theme="dark"] .stage.present:not([aria-pressed="true"]) .tile{border-c
 /* Dark-only atmospheric lighting. Stage identity comes from stageLighting. */
 body[data-theme="dark"]{
  background:
- radial-gradient(ellipse 74% 54% at 76% -8%,color-mix(in srgb,var(--stage-haze) 42%,transparent),transparent 78%),
- radial-gradient(ellipse 58% 44% at 4% 46%,color-mix(in srgb,var(--stage-glow) 16%,transparent),transparent 80%),
+ radial-gradient(ellipse 82% 56% at 78% -8%,color-mix(in srgb,var(--hero-night-c) 30%,transparent),transparent 82%),
+ radial-gradient(ellipse 62% 46% at 5% 42%,color-mix(in srgb,var(--stage-glow) 18%,transparent),transparent 82%),
+ radial-gradient(ellipse 68% 52% at 78% 78%,color-mix(in srgb,var(--stage-haze) 16%,transparent),transparent 84%),
+ linear-gradient(145deg,var(--stage-depth),var(--stage-night) 64%,var(--stage-depth))!important;
+}
+body[data-theme="dark"]:has(.hero[data-solar-stage="0"]){
+ background:
+ radial-gradient(ellipse 82% 56% at 78% -8%,color-mix(in srgb,var(--hero-night-c) 30%,transparent),transparent 82%),
+ radial-gradient(ellipse 62% 46% at 5% 42%,color-mix(in srgb,var(--stage-glow) 18%,transparent),transparent 82%),
+ radial-gradient(ellipse 68% 52% at 78% 78%,color-mix(in srgb,var(--stage-haze) 16%,transparent),transparent 84%),
  linear-gradient(145deg,var(--stage-depth),var(--stage-night) 64%,var(--stage-depth))!important;
 }
 /* Dark mode gets a deeper landscape than light mode, with the same stage hue. */
@@ -716,7 +724,7 @@ const coordinatedPalettes=[
  {light:['#f8eff5','#fffafd','#60465f','#6c526f','#e6ccdf'],dark:['#302a42','#42394f','#f8eaf1','#c9959b','#806e8e']},
  {light:['#f0f0fa','#fbfaff','#4a4b72','#454c79','#d5d5ec'],dark:['#20243d','#303550','#eeeafd','#aaa5cf','#656a93']}
 ];
-const stageLighting=[["#f3b47e","#a55760","#251e29"],["#f6c18f","#bb817b","#29232d"],["#f8d49a","#bca46c","#252c34"],["#b8e1c9","#76a5a2","#1a2b35"],["#ffd28a","#d59c5f","#29283b"],["#f6b7a3","#b57f91","#2d2639"],["#f3b6aa","#a47eb9","#2b253b"],["#d8d0ff","#8b8bc5","#1a2139"]];
+const stageLighting=[["#f3b47e","#a55760","#261921"],["#f6c18f","#bb817b","#261c20"],["#f8d49a","#bca46c","#2c241c"],["#b8e1c9","#76a5a2","#1a2928"],["#ffd28a","#d59c5f","#2c211a"],["#f6b7a3","#b57f91","#2b2028"],["#f3b6aa","#a47eb9","#251d30"],["#d8d0ff","#8b8bc5","#171d31"]];
 const stageHeroPalette=[["#87525b","#e7a987"],["#c58c79","#f2d2ad"],["#d3a969","#f7e3b7"],["#668f84","#dce8cd"],["#c68b53","#f6d5a1"],["#b88179","#efd0b4"],["#6c526f","#c9959b"],["#454c79","#aaa5cf"]];
 const darkHeroPalette=[["#3b232d","#78434b","#bc7258"],["#382526","#704b43","#b87d5d"],["#342a24","#75603c","#b9944f"],["#1d3030","#426a64","#8aa58d"],["#33251d","#805326","#d0a04e"],["#36252e","#79515a","#b77b72"],["#2d2339","#674a75","#aa7891"],["#1e263a","#404a74","#7780b6"]];
 function applyCoordinatedPalette(i){
