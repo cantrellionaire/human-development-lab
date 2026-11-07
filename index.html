@@ -529,6 +529,16 @@ body[data-theme="dark"][data-active-stage="0"] .home-four-grid .eyebrow{color:#e
 .scene .sun{transition:left 1200ms cubic-bezier(.22,.61,.36,1),top 1200ms cubic-bezier(.22,.61,.36,1),background 900ms ease!important}
 @media(max-width:700px){.hero{min-height:340px}.home-four-grid{grid-template-columns:1fr!important;gap:14px}.home-four-grid>.meeting,.home-four-grid>.reflection{min-height:175px;height:auto;padding:20px}.shell{padding-left:16px;padding-right:16px}.hero-copy{padding:26px 22px}}
 @media(prefers-reduced-motion:reduce){body,.hero,.scene .sun,.journey,.stage,.home-four-grid>.meeting,.home-four-grid>.reflection{transition:none!important;animation:none!important}}
+</style><style id="hdl-stage-hero-harmony">
+/* Approved eight-stage tile families drive the hero and the page in both modes. */
+body .hero{background:linear-gradient(115deg,var(--hero-stage-a,#87525b),var(--hero-stage-b,#e7a987))!important}
+body[data-theme="dark"] .hero{background:linear-gradient(115deg,var(--hero-stage-a,#87525b),var(--hero-stage-b,#e7a987))!important}
+body[data-theme="dark"] .hero[data-solar-stage="0"]{background:linear-gradient(115deg,#6b3b47,#a66a69 56%,#e0a084)!important}
+body:not([data-theme="dark"]) .home-four-grid>.meeting,body:not([data-theme="dark"]) .home-four-grid>.reflection{background:var(--stage-card)!important}
+body .stage.present:not([aria-pressed="true"]){outline:1px solid var(--stage-border);outline-offset:2px}
+body[data-theme="dark"] .stage.present:not([aria-pressed="true"]){outline:1px solid var(--stage-night-border);outline-offset:2px}
+body .stage[aria-pressed="true"]{outline:2px solid var(--stage-accent);outline-offset:2px}
+body[data-theme="dark"] .stage[aria-pressed="true"]{outline:2px solid var(--stage-night-accent);outline-offset:2px}
 </style></head><body>
 <div class="shell"><header class="top"><div class="brand"><div class="brandmark" aria-hidden="true"><svg viewBox="0 0 30 30" fill="none" stroke="#66877e" stroke-width="2.2" stroke-linecap="round"><path d="M15 27C10 19 9 12 15 4c6 8 5 15 0 23M15 19C10 11 6 10 3 11c1 8 5 9 12 8M15 16c5-9 9-10 12-9 0 7-5 10-12 9"/></svg></div><div><strong>Human Development Lab</strong><small>PSYC 243 · Every life is still unfolding</small></div></div><nav class="nav" aria-label="Decorative preview navigation"><span>Explore</span><span>My Developmental Journey</span><span>Resources</span></nav><div class="head-actions"><details class="appearance" id="appearanceMenu"><summary aria-label="Appearance settings">⚙ Appearance</summary><div class="appearance-panel"><div class="figure-pick"><span id="figlabel">Figure style</span><div class="seg" role="group" aria-labelledby="figlabel"><button type="button" data-style="classic" aria-pressed="true">Classic</button><button type="button" data-style="feminine" aria-pressed="false">Feminine</button><button type="button" data-style="masculine" aria-pressed="false">Masculine</button></div></div><p class="mininote">Optional artwork preference; Classic displays a variety of people.</p><p class="mini-disclaimer">All three artwork sets are draft variants; review them at the actual tile size.</p></div></details><span class="tag">DESIGN STUDY · NOT CONNECTED</span></div></header>
 <div class="theme-toolbar"><span>Appearance</span><button type="button" id="themeToggle" aria-pressed="false" aria-label="Switch to dark theme">☾ Dark theme</button></div><main><section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><span class="eyebrow" id="chapter">Chapter 06 · The human story</span><h1 id="hero-title">Every life is still unfolding.</h1><p id="intro">From our earliest beginnings to the lives we continue becoming. Every chapter holds a new perspective.</p><span class="season"><span class="sun-dot"></span><span id="sunlabel">Emerging Adulthood</span></span></div><div class="scene" aria-hidden="true"><div class="solar-atmosphere"></div><div class="sun"></div><div class="hill back"></div><div class="hill"></div><div class="scene-person" id="heroFigure"></div></div></section>
@@ -646,15 +656,16 @@ updateNightPalette();
 
 
 const coordinatedPalettes=[
- {light:['#fff4e9','#fff9f2','#674a43','#b87d51','#e6c5aa'],dark:['#26262c','#343137','#f6e8df','#e8b68b','#836e70']},
- {light:['#fff4e8','#fffaf3','#644b49','#b97b61','#ebd0b8'],dark:['#29212f','#3b3040','#f6e9df','#e4b38c','#745b6a']},
- {light:['#f5f7ed','#fffdf5','#415c5a','#9a8352','#d7dfca'],dark:['#202d38','#2d3d48','#ecf0e8','#d5ba80','#536876']},
- {light:['#edf5f6','#fbfdfc','#35566a','#498a9e','#c7dfe5'],dark:['#182d40','#253c50','#e8f0f5','#93c5d6','#47677e']},
- {light:['#f2f2fa','#fdfcff','#444e70','#7b76ae','#d7d4eb'],dark:['#20243e','#303550','#f0ecf9','#b6abe7','#565b84']},
- {light:['#f8f0f5','#fffafd','#654e69','#a3759d','#e4cfdf'],dark:['#29233f','#3c3151','#f3e9f7','#d1a7d6','#705d83']},
- {light:['#f8eff5','#fffafd','#60465f','#a7729e','#e6ccdf'],dark:['#302a42','#42394f','#f8eaf1','#e6b1a2','#806e8e']},
- {light:['#f0f0fa','#fbfaff','#4a4b72','#7878ad','#d5d5ec'],dark:['#191e37','#292e4b','#eeeafd','#b6b4e8','#51577e']}
+ {light:['#faf0eb','#fffaf7','#654149','#87525b','#e8c9c4'],dark:['#29252b','#383036','#f8e9df','#e7a987','#81636b']},
+ {light:['#faf1e9','#fffaf5','#674940','#c58c79','#ecd1c5'],dark:['#30262b','#403238','#f8e9e2','#f2d2ad','#866c6a']},
+ {light:['#faf5e8','#fffdf5','#65513c','#d3a969','#ead9bb'],dark:['#302d29','#423a30','#f8efd9','#f7e3b7','#837458']},
+ {light:['#eef5ee','#fbfdf9','#365951','#668f84','#d2e3d6'],dark:['#1f302f','#2e403e','#ecf4ee','#dce8cd','#66847a']},
+ {light:['#faf2e6','#fffbf4','#66503a','#c68b53','#ead2b5'],dark:['#302b27','#42372f','#f9ecdc','#f6d5a1','#897055']},
+ {light:['#faf0ed','#fffbf9','#65464c','#b88179','#e9cfcc'],dark:['#30282e','#42343d','#f9e8e5','#efd0b4','#886b73']},
+ {light:['#f8eff5','#fffafd','#60465f','#6c526f','#e6ccdf'],dark:['#302a42','#42394f','#f8eaf1','#c9959b','#806e8e']},
+ {light:['#f0f0fa','#fbfaff','#4a4b72','#454c79','#d5d5ec'],dark:['#20243d','#303550','#eeeafd','#aaa5cf','#656a93']}
 ];
+const stageHeroPalette=[["#87525b","#e7a987"],["#c58c79","#f2d2ad"],["#d3a969","#f7e3b7"],["#668f84","#dce8cd"],["#c68b53","#f6d5a1"],["#b88179","#efd0b4"],["#6c526f","#c9959b"],["#454c79","#aaa5cf"]];
 function applyCoordinatedPalette(i){
  const root=document.body,body=document.body,p=coordinatedPalettes[i];
  const lightKeys=['--stage-page','--stage-card','--stage-text','--stage-accent','--stage-border'];
@@ -662,6 +673,8 @@ function applyCoordinatedPalette(i){
  lightKeys.forEach((key,j)=>root.style.setProperty(key,p.light[j]));
  darkKeys.forEach((key,j)=>root.style.setProperty(key,p.dark[j]));
  body.dataset.activeStage=String(i);
+ body.style.setProperty('--hero-stage-a',stageHeroPalette[i][0]);
+ body.style.setProperty('--hero-stage-b',stageHeroPalette[i][1]);
 }
 
 function selectStage(i){if(i>currentStage)return;applyCoordinatedPalette(i);stage=i;document.querySelector('.hero').dataset.solarStage=String(i);document.querySelector('.hero').classList.toggle('early-sun-visible',i<=1);const p=phases[i],c=p.color;document.documentElement.style.setProperty('--sky1',c[0]);document.documentElement.style.setProperty('--sky2',c[1]);document.documentElement.style.setProperty('--ground',c[2]);document.documentElement.style.setProperty('--deep',c[3]);document.documentElement.style.setProperty('--sky3',c[4]);document.documentElement.style.setProperty('--view-glow',c[5]);moveSun(i===currentStage?coursePosition():i);updateNightPalette(i);document.documentElement.style.setProperty('--sand',c[2]);byId('chapter').textContent=`Chapter ${String(i+1).padStart(2,'0')} · The human story`;byId('hero-title').textContent=p.hero;byId('intro').textContent=p.desc;byId('sunlabel').textContent=p.name;byId('phaseDescription').textContent=p.desc+' Each stage illuminates an area of development, not a measure of personal worth or progress.';renderStages();byId('previewStatus').textContent=i===currentStage?'Our current chapter · '+p.name:'Revisiting · '+p.name;byId('carryQuestion').textContent=questions[i];byId('calendarMode').setAttribute('aria-pressed',String(calendarMode));}
