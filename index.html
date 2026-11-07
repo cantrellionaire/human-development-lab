@@ -591,6 +591,49 @@ body[data-theme="dark"] .home-four-grid>.reflection:hover{
  box-shadow:0 23px 52px rgba(5,7,20,.4),inset 0 1px 0 color-mix(in srgb,var(--stage-glow) 30%,transparent)!important;
 }
 @media(prefers-reduced-motion:reduce){body[data-theme="dark"] .hero::before{animation:none!important;transition:none!important}}
+</style><style id="hdl-atmospheric-impact-pass">
+/* Add a clearer focal glow and richer color field without changing artwork or layout. */
+body:not([data-theme="dark"]){
+ background:
+  radial-gradient(ellipse 74% 48% at 82% 2%,color-mix(in srgb,var(--hero-stage-b) 38%,transparent),transparent 84%),
+  radial-gradient(ellipse 58% 42% at 7% 30%,color-mix(in srgb,var(--hero-stage-a) 19%,transparent),transparent 84%),
+  linear-gradient(145deg,var(--stage-page),var(--stage-card) 52%,var(--stage-page))!important;
+}
+body[data-theme="dark"]{
+ background:
+  radial-gradient(ellipse 82% 58% at 78% -8%,color-mix(in srgb,var(--hero-night-c) 43%,transparent),transparent 83%),
+  radial-gradient(ellipse 62% 46% at 5% 42%,color-mix(in srgb,var(--stage-glow) 25%,transparent),transparent 84%),
+  radial-gradient(ellipse 68% 52% at 78% 78%,color-mix(in srgb,var(--stage-haze) 23%,transparent),transparent 85%),
+  linear-gradient(145deg,var(--stage-depth),var(--stage-night) 60%,var(--stage-depth))!important;
+}
+.hero::after{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:
+  radial-gradient(ellipse 34% 76% at var(--sun-x,68%) var(--sun-y,27%),color-mix(in srgb,var(--stage-glow) 32%,transparent),transparent 82%),
+  radial-gradient(ellipse 76% 25% at var(--sun-x,68%) 100%,color-mix(in srgb,var(--stage-haze) 35%,transparent),transparent 92%),
+  linear-gradient(180deg,transparent 56%,color-mix(in srgb,var(--stage-depth) 13%,transparent));
+ opacity:.84;transition:opacity .8s ease;
+}
+.hero .scene .sun::after{
+ inset:-96%;opacity:1;filter:blur(11px);
+ background:radial-gradient(circle,
+  rgba(255,255,239,.76) 0%,
+  color-mix(in srgb,var(--stage-glow) 54%,transparent) 25%,
+  color-mix(in srgb,var(--stage-haze) 35%,transparent) 48%,
+  transparent 78%);
+}
+body[data-theme="dark"] .hero{
+ box-shadow:0 34px 90px rgba(5,7,20,.48),0 0 0 1px color-mix(in srgb,var(--stage-glow) 38%,transparent),inset 0 1px 0 rgba(255,250,233,.24)!important;
+}
+body[data-theme="dark"] .journey{
+ box-shadow:0 24px 62px rgba(5,7,20,.36),inset 0 1px 0 color-mix(in srgb,var(--stage-glow) 27%,transparent),0 0 0 1px color-mix(in srgb,var(--stage-haze) 17%,transparent)!important;
+}
+body[data-theme="dark"] .home-four-grid>.meeting,
+body[data-theme="dark"] .home-four-grid>.reflection{
+ border-color:color-mix(in srgb,var(--stage-night-border) 72%,var(--stage-glow))!important;
+ box-shadow:0 20px 50px rgba(5,7,20,.38),inset 0 1px 0 color-mix(in srgb,var(--stage-glow) 28%,transparent),0 0 22px color-mix(in srgb,var(--stage-haze) 10%,transparent)!important;
+}
+@media(prefers-reduced-motion:reduce){.hero::after{transition:none!important}}
 </style><style id="hdl-mobile-stage-rail-fix">
 /* Keep the horizontally scrollable stage rail inside the page at phone widths. */
 @media(max-width:600px){
